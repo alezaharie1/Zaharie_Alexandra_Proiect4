@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zaharie_Alexandra_Proiect4.Data;
 
@@ -11,9 +12,11 @@ using Zaharie_Alexandra_Proiect4.Data;
 namespace Zaharie_Alexandra_Proiect4.Migrations
 {
     [DbContext(typeof(Zaharie_Alexandra_Proiect4Context))]
-    partial class Zaharie_Alexandra_Proiect4ContextModelSnapshot : ModelSnapshot
+    [Migration("20240217205417_Language")]
+    partial class Language
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
