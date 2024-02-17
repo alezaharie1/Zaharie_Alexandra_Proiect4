@@ -16,5 +16,6 @@ namespace Zaharie_Alexandra_Proiect4.Data
 
         public DbSet<Zaharie_Alexandra_Proiect4.Models.Course> Course { get; set; } = default!;
         public DbSet<Zaharie_Alexandra_Proiect4.Models.Mentor> Mentor { get; set; } = default!;
+        public DbSet<Zaharie_Alexandra_Proiect4.Models.Department> Department { get; set; } = default!;
     }
 }

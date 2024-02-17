@@ -18,5 +18,7 @@ namespace Zaharie_Alexandra_Proiect4.Models
 
         public int? MentorID { get; set; }
         public Mentor? Mentor { get; set; }
+
+        public ICollection<CourseDepartment>? CourseDepartments { get; set; }
     }
 }
