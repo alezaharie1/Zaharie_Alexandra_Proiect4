@@ -20,6 +20,11 @@
   <ItemGroup>
     <Compile Remove="Models\Category.cs" />
     <Compile Remove="Models\Class.cs" />
+    <Compile Remove="Pages\Index.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
