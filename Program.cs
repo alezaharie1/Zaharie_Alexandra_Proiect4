@@ -1,7 +1,12 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Zaharie_Alexandra_Proiect4.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<Zaharie_Alexandra_Proiect4Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Zaharie_Alexandra_Proiect4Context") ?? throw new InvalidOperationException("Connection string 'Zaharie_Alexandra_Proiect4Context' not found.")));
 
 var app = builder.Build();
 
