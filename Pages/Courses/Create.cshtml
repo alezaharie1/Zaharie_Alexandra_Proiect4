@@ -40,6 +40,32 @@
                 <span asp-validation-for="Course.MentorID" class="text-danger"></span>
             </div>
             <div class="form-group">
+ <div class="table">
+ <table>
+ <tr>
+ @{
+ int cnt = 0;
+ foreach (var dep in Model.AssignedDepartmentDataList)
+ {
+ if (cnt++ % 3 == 0)
+ {
+ @:</tr><tr>
+ }
+@:<td>
+ <input type="checkbox"
+ name="selectedDepartments"
+value="@dep.DepartmentID"
+ @(Html.Raw(dep.Assigned ?
+"checked=\"checked\"" : "")) />
+ @dep.DepartmentID @: @dep.Name
+ @:</td>
+ }
+ @:</tr>
+ }
+ </table>
+ </div>
+ </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

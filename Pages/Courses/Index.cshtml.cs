@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -20,11 +21,29 @@ namespace Zaharie_Alexandra_Proiect4.Pages.Courses
         }
 
         public IList<Course> Course { get;set; } = default!;
+        public CourseData CourseD { get; set; }
+        public int CourseID { get; set; }
+        public int DepartmentID { get; set; }
 
-        public async Task OnGetAsync()
+
+        public async Task OnGetAsync(int? id, int? departmentID)
         {
-        
-            Course = await _context.Course.Include(b => b.Mentor).ToListAsync();
+            CourseD = new CourseData();
+
+            CourseD.Courses = await _context.Course
+            .Include(b => b.Mentor)
+            .Include(b => b.CourseDepartments)
+            .ThenInclude(b => b.Department)
+            .AsNoTracking()
+            .OrderBy(b => b.Name)
+            .ToListAsync();
+            if (id != null)
+            {
+                CourseID = id.Value;
+                Course course = CourseD.Courses
+                .Where(i => i.ID == id.Value).Single();
+                CourseD.Departments = course.CourseDepartments.Select(s => s.Department);
+            }
         }
     }
 }

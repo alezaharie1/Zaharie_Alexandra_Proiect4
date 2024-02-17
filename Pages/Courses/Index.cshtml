@@ -26,14 +26,23 @@
                 @Html.DisplayNameFor(model => model.Course[0].StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].Mentor.MentorName)
+                @Html.DisplayNameFor(model => model.Course[0].Mentor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course[0].CourseDepartments)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Course) {
-        <tr>
+        @foreach (var item in Model.CourseD.Courses)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.CourseID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -49,6 +58,15 @@
              <td>
                 @Html.DisplayFor(modelItem => item.Mentor.MentorName)
              </td>
+
+                <td>
+                    @{
+                        foreach (var department in item.CourseDepartments)
+                        {
+                            @department.Department.ID @: @department.Department.DepartmentName <br />
+                        }
+                    }
+                </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
